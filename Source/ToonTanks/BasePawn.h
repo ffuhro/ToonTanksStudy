@@ -15,13 +15,39 @@ public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	int32 VisibleAnywhereInt = 12;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	int32 EditAnywhereInt = 22;
+
+	UPROPERTY(VisibleInstanceOnly)
+	int32 VisibleInstanceOnlyInt = 33;
+
+	UPROPERTY(EditInstanceOnly)
+	int32 EditInstanceOnlyInt = 44;
+
+	UPROPERTY(VisibleDefaultsOnly)
+	int32 VisibleDefaultsOnlyInt = 55;
+
+	UPROPERTY(EditDefaultsOnly)
+	int32 EditDefaultsOnlyInt = 9;
+
+	
+	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta=(AllowPrivateAccess))
 	class UCapsuleComponent* CapsuleComp;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta=(AllowPrivateAccess))
+	UStaticMeshComponent* BaseMesh;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta=(AllowPrivateAccess))
+	UStaticMeshComponent* TurretMesh;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta=(AllowPrivateAccess))
+	USceneComponent* ProjectileSpawnPoint;
 
 	
 public:	
@@ -31,4 +57,6 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float Speed = 400.f;
 };
