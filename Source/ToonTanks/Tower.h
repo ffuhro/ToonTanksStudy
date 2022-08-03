@@ -26,7 +26,12 @@ private:
 	class ATank* Tank;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite,Category = "Combat", meta=(AllowPrivateAccess))
-	float FireRange = 300.f;
+	float FireRange = 700.f;
 
-	
+	FTimerHandle FireRateTimerHandle;
+	float FireRate = 1.f;
+	void CheckFireCondition();
+
+	bool InFireRange();
 };
+

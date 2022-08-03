@@ -10,26 +10,39 @@ void ATower::BeginPlay()
 	Super::BeginPlay();
 
 	Tank = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this, 0));
-		
+
+	GetWorldTimerManager().SetTimer(FireRateTimerHandle, this, &ATower::CheckFireCondition, FireRate, true);
 }
 
 void ATower::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	
+	if (InFireRange())
+	{
+		RotateTurret(Tank->GetActorLocation());
+	}
+	
+}
 
-	// Find distance to the tank
+void ATower::CheckFireCondition()
+{
+	
+	if (InFireRange())
+	{
+		Fire();
+	}
+}
+
+bool ATower::InFireRange()
+{
 	if (Tank)
 	{
 		float Distance = FVector::Dist(GetActorLocation(), Tank->GetActorLocation());
-
-		// Check to see if the tank is in range
 		if (Distance <= FireRange)
 		{
-			// If in range, rotate towards the player
-			RotateTurret(Tank->GetActorLocation());
+			return true;
 		}
-
 	}
-
-	
+	return false;
 }
