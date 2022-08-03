@@ -23,4 +23,19 @@ private:
 	
 	UPROPERTY(VisibleAnywhere, Category="Components")
 	class UCameraComponent* Camera;
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Movement", meta=(AllowPrivateAccess))
+	float Speed = 400.f;
+	float TurnSpeed = 100.f;
+		
+	void Move(float Value);
+	void Turn(float Value);
+
+	
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+
+	
 };
