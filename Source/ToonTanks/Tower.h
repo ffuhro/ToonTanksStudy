@@ -33,5 +33,8 @@ private:
 	void CheckFireCondition();
 
 	bool InFireRange();
+
+	bool bFiring = false;
+	
 };
 
