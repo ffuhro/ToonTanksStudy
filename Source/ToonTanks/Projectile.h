@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "GameFramework/ProjectileMovementComponent.h"
 #include "Projectile.generated.h"
 
 UCLASS()
@@ -22,7 +23,8 @@ protected:
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta=(AllowPrivateAccess))	
 	UStaticMeshComponent* BaseMesh;
-
+	UPROPERTY(VisibleAnywhere, Category="Movement")
+	UProjectileMovementComponent* ProjectileMovementComponent;
 	
 public:	
 	// Called every frame
