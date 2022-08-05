@@ -36,6 +36,15 @@ void ABasePawn::Tick(float DeltaTime)
 	
 }
 
+
+void ABasePawn::HandleDestruction()
+{
+	// TODO: Visual/Sound effects
+		
+}
+
+
+
 void ABasePawn::RotateTurret(FVector LookAtTarget)
 {
 	
@@ -62,5 +71,8 @@ void ABasePawn::Fire()
 	FRotator Rotation = ProjectileSpawnPoint->GetComponentRotation();
 	Rotation.Pitch = 45.f;
 	// Spawn Projectile in the spawn point location and rotation
-	GetWorld()->SpawnActor<AProjectile>(ProjectileClass,Location,Rotation);
+	auto Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileClass,Location,Rotation);
+	Projectile->SetOwner(this);	
+
+
 }
