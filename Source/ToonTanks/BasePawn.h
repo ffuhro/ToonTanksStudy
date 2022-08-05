@@ -33,6 +33,9 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category= "Combat")
 	TSubclassOf<class AProjectile> ProjectileClass;
 	
+	UPROPERTY(EditDefaultsOnly, Category= "Combat")
+	UParticleSystem* DeathParticles;
+	
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

@@ -32,8 +32,12 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float Damage = 50.f;
-	
 
+	UPROPERTY(EditAnywhere, Category= "Combat")
+	UParticleSystem* HitParticles;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Combat", meta=(AllowPrivateAccess))
+	UParticleSystemComponent* TrailParticle;
 	
 public:	
 	// Called every frame
