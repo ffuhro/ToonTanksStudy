@@ -39,12 +39,15 @@ void ABasePawn::Tick(float DeltaTime)
 
 void ABasePawn::HandleDestruction()
 {
-	// TODO: Visual/Sound effects
+
 	if (DeathParticles)
 	{
 		UGameplayStatics::SpawnEmitterAtLocation(this, DeathParticles, GetActorLocation());
 	}
-	
+	if (DeathSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, DeathSound, GetActorLocation());
+	}
 }
 
 

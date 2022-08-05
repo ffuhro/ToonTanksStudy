@@ -31,7 +31,11 @@ void AProjectile::BeginPlay()
 	Super::BeginPlay();
 
 	BaseMesh->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
-	
+
+	if (LaunchSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, LaunchSound, GetActorLocation());
+	}
 	
 }
 
@@ -66,6 +70,10 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimi
 		{
 			UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, GetActorLocation());
 		}
+	}
+	if (HitSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, HitSound, GetActorLocation());
 	}
 	Destroy();	
 }
