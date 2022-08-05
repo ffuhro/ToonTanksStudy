@@ -5,7 +5,10 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "Camera/CameraShakeBase.h"
 #include "Projectile.generated.h"
+
+
 
 class USoundBase;
 
@@ -45,7 +48,8 @@ private:
 	USoundBase* LaunchSound;
 	UPROPERTY(EditAnywhere, Category="Combat")
 	USoundBase* HitSound;
-
+	UPROPERTY(EditAnywhere, Category="Combat")
+	TSubclassOf<UCameraShakeBase> HitCameraShakeClass;
 	
 public:	
 	// Called every frame
